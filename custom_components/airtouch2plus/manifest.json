@@ -1,0 +1,15 @@
+{
+  "domain": "airtouch2plus",
+  "name": "airtouch2plus",
+  "codeowners": ["@nathanvdh"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://www.home-assistant.io/integrations/airtouch2",
+  "homekit": {},
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/nathanvdh/homeassistant-airtouch2/issues",
+  "requirements": ["airtouch2==0.7.4"],
+  "ssdp": [],
+  "version": "0.1",
+  "zeroconf": []
+}
