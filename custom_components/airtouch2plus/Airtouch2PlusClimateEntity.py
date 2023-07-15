@@ -9,6 +9,7 @@ from .conversions import (
 )
 from .const import DOMAIN
 
+from typing import final
 
 from homeassistant.components.climate import (
     ClimateEntity,
@@ -21,6 +22,7 @@ from homeassistant.components.climate import (
 from homeassistant.helpers.entity import DeviceInfo
 
 
+@final
 class Airtouch2PlusClimateEntity(ClimateEntity):
     """Representation of an AirTouch 2+ AC."""
 
