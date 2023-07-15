@@ -26,5 +26,5 @@ async def async_setup_entry(
         Airtouch2PlusClimateEntity(ac) for ac in airtouch2_client.aircons_by_id.values()
     ]
 
-    _LOGGER.debug(" Found entities %s", entities)
+    _LOGGER.debug(f" Found entities {[repr(entity) for entity in entities]}")
     async_add_entities(entities)
