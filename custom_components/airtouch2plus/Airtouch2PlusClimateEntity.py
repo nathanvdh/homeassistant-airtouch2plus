@@ -82,7 +82,7 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
     @property
     def hvac_mode(self) -> str:
         """Return hvac operation ie. heat, cool mode."""
-        if not self._ac.on:
+        if not self._ac.is_on():
             return HVACMode.OFF
 
         return AT2PLUS_TO_HA_MODE[self._ac.status.mode]
@@ -136,20 +136,20 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         """Set new target hvac mode."""
         if hvac_mode == HVACMode.OFF:
-            if self._ac.on:
+            if self._ac.is_on():
                 await self.async_turn_off()
         else:
-            if not self._ac.on:
+            if not self._ac.is_on():
                 await self.async_turn_on()
             await self._ac.set_mode(HA_MODE_TO_AT2PLUS_SETMODE[hvac_mode])
 
     async def async_turn_on(self):
         """Turn on."""
-        await self._ac.on()
+        await self._ac.turn_on()
 
     async def async_turn_off(self):
         """Turn off."""
-        await self._ac.off()
+        await self._ac.turn_off()
 
     @property
     def supported_features(self) -> ClimateEntityFeature:
