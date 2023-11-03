@@ -36,8 +36,7 @@ class AirTouch2PlusGroupEntity(FanEntity):
     @property
     def name(self):
         """Return the name of this group."""
-        # TODO: Group names
-        return f"Group {self._group.status.id}"
+        return self._group.name if self._group.name is not None else f"Group {self._group.status.id}"
 
     @property
     def device_info(self) -> DeviceInfo:
