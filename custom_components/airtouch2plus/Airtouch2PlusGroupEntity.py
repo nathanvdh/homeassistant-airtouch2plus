@@ -2,7 +2,7 @@ from airtouch2.at2plus import At2PlusGroup
 
 from .const import DOMAIN
 
-from typing import final
+from typing import Any, final
 import logging
 
 from homeassistant.components.fan import FanEntity, FanEntityFeature
@@ -68,11 +68,20 @@ class AirTouch2PlusGroupEntity(FanEntity):
     @property
     def percentage(self) -> int:
         """Return current percentage of the group damper."""
-        if not self.is_on():
-            return 0
         return self._group.status.damp
 
     @property
     def supported_features(self) -> FanEntityFeature:
         """Fan supported features."""
-        return 0
+        return FanEntityFeature.SET_SPEED
+
+    async def async_turn_on(self, percentage: int | None = None, preset_mode: str | None = None, **kwargs: Any) -> None:
+        """Turn on the group."""
+        await self._group.turn_on(percentage)
+
+    async def async_turn_off(self, **kwargs: Any) -> None:
+        await self._group.turn_off()
+
+    async def async_set_percentage(self, percentage: int) -> None:
+        """Set the speed percentage of the group damper."""
+        await self._group.set_damp(percentage)
