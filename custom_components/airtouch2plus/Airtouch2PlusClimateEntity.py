@@ -164,4 +164,4 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
         if mode == AcMode.FAN:
             return ClimateEntityFeature.FAN_MODE
 
-        return ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
+        return ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON | ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
