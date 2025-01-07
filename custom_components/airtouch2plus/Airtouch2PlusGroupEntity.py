@@ -36,7 +36,11 @@ class AirTouch2PlusGroupEntity(FanEntity):
     @property
     def name(self):
         """Return the name of this group."""
-        return self._group.name if self._group.name is not None else f"Group {self._group.status.id}"
+        return (
+            self._group.name
+            if self._group.name is not None
+            else f"Group {self._group.status.id}"
+        )
 
     @property
     def device_info(self) -> DeviceInfo:
@@ -52,8 +56,7 @@ class AirTouch2PlusGroupEntity(FanEntity):
         """Call when entity is added."""
         # Add callback for when group receives new data.
         # Removes callback on remove.
-        self.async_on_remove(
-            self._group.add_callback(self.async_write_ha_state))
+        self.async_on_remove(self._group.add_callback(self.async_write_ha_state))
 
     #
     # FanEntity overrides
@@ -74,7 +77,12 @@ class AirTouch2PlusGroupEntity(FanEntity):
         """Fan supported features."""
         return FanEntityFeature.SET_SPEED
 
-    async def async_turn_on(self, percentage: int | None = None, preset_mode: str | None = None, **kwargs: Any) -> None:
+    async def async_turn_on(
+        self,
+        percentage: int | None = None,
+        preset_mode: str | None = None,
+        **kwargs: Any,
+    ) -> None:
         """Turn on the group."""
         await self._group.turn_on(percentage)
 
