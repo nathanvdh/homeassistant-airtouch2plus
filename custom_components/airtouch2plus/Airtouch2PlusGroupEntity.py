@@ -1,3 +1,5 @@
+"""AirTouch 2+ zone entity."""
+
 from airtouch2.at2plus import At2PlusGroup
 
 from .const import DOMAIN
@@ -87,6 +89,7 @@ class AirTouch2PlusGroupEntity(FanEntity):
         await self._group.turn_on(percentage)
 
     async def async_turn_off(self, **kwargs: Any) -> None:
+        """Turn off the group."""
         await self._group.turn_off()
 
     async def async_set_percentage(self, percentage: int) -> None:
