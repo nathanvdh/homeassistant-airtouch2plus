@@ -10,6 +10,6 @@
   "issue_tracker": "https://github.com/nathanvdh/homeassistant-airtouch2/issues",
   "requirements": ["airtouch2==0.8.6"],
   "ssdp": [],
-  "version": "0.2.8",
+  "version": "0.2.9",
   "zeroconf": []
 }
