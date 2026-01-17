@@ -11,7 +11,16 @@ Platform | Description
 `climate` | Control temperature, mode, fan speed
 
 ## Installation
+This is integration is not available in home assistant by default, it must be either manually copied to your home assistant 'integrations' directory, or installed via HACS (recommended).
 
-1. Click install.
-1. In the HA UI go to "Configuration" -> "Integrations" click "+" and search for "airtouch2plus".
-1. Enter the host address (IP) of the Airtouch 2+ system
+See the HACS documentation on how to install it: https://www.hacs.xyz/docs/use
+
+You will then need to add this github repo as a custom repository: https://www.hacs.xyz/docs/faq/custom_repositories
+
+Make sure to select the 'Integration' type.
+
+Download the added custom repository.
+
+The airtouch2plus integration should now appear in the list of integrations with all the others.
+
+When you add the integration, you will be prompted for the host address (IP) of your Airtouch 2+ system - enter it and that's it!
