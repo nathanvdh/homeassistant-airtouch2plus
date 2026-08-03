@@ -1,17 +1,25 @@
-# Airtouch 2+ integration
+# AirTouch 2+ integration
 
-_Component to integrate with Polyaire Airtouch 2+._
+A local Home Assistant integration for Polyaire AirTouch 2+ systems.
 
-Utilizes [airtouch2-python](https://github.com/nathanvdh/airtouch2-python)
+This fork is maintained by
+[@honeybadger44](https://github.com/honeybadger44) and is based on the original
+work by [@nathanvdh](https://github.com/nathanvdh). It uses
+[airtouch2-python](https://github.com/nathanvdh/airtouch2-python).
 
-**This component will set up the following platforms.**
+## Entities
 
-Platform | Description
--- | --
-`climate` | Control temperature, mode, fan speed
+| Platform | Description |
+|---|---|
+| `climate` | AC temperature, mode, setpoint, and fan-speed control |
+| `fan` | Zone power and damper-percentage control |
 
 ## Installation
 
-1. Click install.
-1. In the HA UI go to "Configuration" -> "Integrations" click "+" and search for "airtouch2plus".
-1. Enter the host address (IP) of the Airtouch 2+ system
+1. Select **Download** in HACS.
+2. Restart Home Assistant.
+3. Open **Settings → Devices & services → Add integration**.
+4. Search for **AirTouch 2+** and enter the controller's local IP address.
+
+This is an independent community integration and is not an official Polyaire
+product.
