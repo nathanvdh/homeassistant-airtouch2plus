@@ -8,7 +8,7 @@ from airtouch2.at2plus import At2PlusGroup
 from homeassistant.components.fan import FanEntity, FanEntityFeature
 from homeassistant.helpers.entity import DeviceInfo
 
-from .const import DOMAIN
+from .const import DOMAIN, ZONE_SPEED_COUNT
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -25,6 +25,7 @@ class AirTouch2PlusGroupEntity(FanEntity):
     # Entity attributes:
     #
     _attr_should_poll: bool = False
+    _attr_speed_count: int = ZONE_SPEED_COUNT
 
     #
     # Entity overrides:

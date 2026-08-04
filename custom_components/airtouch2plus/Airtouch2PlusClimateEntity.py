@@ -99,20 +99,14 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
         return modes
 
     @property
-    def current_temperature(self) -> float:
+    def current_temperature(self) -> float | None:
         """Return the current temperature."""
-        if self._ac.status.temperature is not None:
-            return self._ac.status.temperature
-        else:
-            return 0
+        return self._ac.status.temperature
 
     @property
-    def target_temperature(self) -> float:
+    def target_temperature(self) -> float | None:
         """Return the temperature we try to reach."""
-        if self._ac.status.set_point is not None:
-            return self._ac.status.set_point
-        else:
-            return 0
+        return self._ac.status.set_point
 
     @property
     def fan_mode(self) -> str:
