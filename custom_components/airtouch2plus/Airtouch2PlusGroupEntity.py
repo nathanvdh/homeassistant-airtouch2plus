@@ -34,7 +34,7 @@ class AirTouch2PlusGroupEntity(FanEntity):
     @property
     def unique_id(self) -> str:
         """Return unique ID for this device."""
-        return f"at2plus__{self._instance}_group_{self._group.status.id}"
+        return f"at2plus_{self._instance}_group_{self._group.status.id}"
 
     @property
     def name(self):
