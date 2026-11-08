@@ -1,16 +1,16 @@
 """AirTouch 2 component to control AirTouch 2 Climate Device."""
-from __future__ import annotations
-
-from airtouch2.at2plus import At2PlusClient
-from .Airtouch2PlusClimateEntity import Airtouch2PlusClimateEntity
-from .const import DOMAIN
 
 import logging
+
+from airtouch2.at2plus import At2PlusClient
 
 from homeassistant.components.climate import ClimateEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
+from .Airtouch2PlusClimateEntity import Airtouch2PlusClimateEntity
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
