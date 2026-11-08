@@ -8,8 +8,8 @@
   "homekit": {},
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/nathanvdh/homeassistant-airtouch2plus/issues",
-  "requirements": ["airtouch2==0.9.1"],
+  "requirements": ["airtouch2==0.9.2"],
   "ssdp": [],
-  "version": "0.3.0",
+  "version": "0.3.1",
   "zeroconf": []
 }
