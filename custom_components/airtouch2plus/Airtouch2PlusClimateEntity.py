@@ -1,25 +1,25 @@
-from airtouch2.at2plus import At2PlusAircon, AcMode
-
-from .conversions import (
-    AT2PLUS_TO_HA_MODE,
-    AT2PLUS_SETMODE_TO_HA_MODE,
-    AT2PLUS_TO_HA_FAN_SPEED,
-    HA_MODE_TO_AT2PLUS_SETMODE,
-    HA_FAN_SPEED_TO_AT2PLUS
-)
-from .const import DOMAIN
-
 from typing import final
 
+from airtouch2.at2plus import AcMode, At2PlusAircon
+
 from homeassistant.components.climate import (
+    ATTR_TEMPERATURE,
+    PRECISION_WHOLE,
     ClimateEntity,
     ClimateEntityFeature,
     HVACMode,
     UnitOfTemperature,
-    ATTR_TEMPERATURE,
-    PRECISION_WHOLE
 )
 from homeassistant.helpers.entity import DeviceInfo
+
+from .const import DOMAIN
+from .conversions import (
+    AT2PLUS_SETMODE_TO_HA_MODE,
+    AT2PLUS_TO_HA_FAN_SPEED,
+    AT2PLUS_TO_HA_MODE,
+    HA_FAN_SPEED_TO_AT2PLUS,
+    HA_MODE_TO_AT2PLUS_SETMODE,
+)
 
 
 @final
@@ -123,7 +123,10 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
     def fan_modes(self) -> list[str]:
         """Return the list of available fan modes."""
         if self._ac.ability is not None:
-            return [AT2PLUS_TO_HA_FAN_SPEED[s] for s in self._ac.ability.supported_fan_speeds]
+            return [
+                AT2PLUS_TO_HA_FAN_SPEED[s]
+                for s in self._ac.ability.supported_fan_speeds
+            ]
         return []
 
     async def async_set_temperature(self, **kwargs) -> None:
@@ -166,4 +169,9 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
         if mode == AcMode.FAN:
             return ClimateEntityFeature.FAN_MODE
 
-        return ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON | ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
+        return (
+            ClimateEntityFeature.TURN_OFF
+            | ClimateEntityFeature.TURN_ON
+            | ClimateEntityFeature.TARGET_TEMPERATURE
+            | ClimateEntityFeature.FAN_MODE
+        )
