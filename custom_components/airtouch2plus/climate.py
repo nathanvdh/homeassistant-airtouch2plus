@@ -23,7 +23,8 @@ async def async_setup_entry(
     """Set up the Airtouch 2+."""
     airtouch2_client: At2PlusClient = hass.data[DOMAIN][config_entry.entry_id]
     entities: list[ClimateEntity] = [
-        Airtouch2PlusClimateEntity(ac) for ac in airtouch2_client.aircons_by_id.values()
+        Airtouch2PlusClimateEntity(ac, config_entry.entry_id)
+        for ac in airtouch2_client.aircons_by_id.values()
     ]
 
     _LOGGER.debug(f" Found entities {[repr(entity) for entity in entities]}")

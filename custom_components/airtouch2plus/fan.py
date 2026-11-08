@@ -21,7 +21,8 @@ async def async_setup_entry(
     """Set up the AirTouch 2+ group entities."""
     client: At2PlusClient = hass.data[DOMAIN][config_entry.entry_id]
     entities: list[FanEntity] = [
-        AirTouch2PlusGroupEntity(group) for group in client.groups_by_id.values()
+        AirTouch2PlusGroupEntity(group, config_entry.entry_id)
+        for group in client.groups_by_id.values()
     ]
 
     if entities:

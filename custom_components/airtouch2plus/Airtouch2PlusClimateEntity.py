@@ -40,9 +40,10 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
     _attr_target_temperature_step: float = 1.0
     _attr_native_temperature_unit: str = UnitOfTemperature.CELSIUS
 
-    def __init__(self, at2plus_aircon: At2PlusAircon) -> None:
+    def __init__(self, at2plus_aircon: At2PlusAircon, instance: str) -> None:
         """Initialize the climate device."""
         self._ac = at2plus_aircon
+        self._instance = instance
 
     #
     # Entity overrides:
@@ -51,7 +52,7 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
     @property
     def unique_id(self) -> str:
         """Return unique ID for this device."""
-        return f"at2plus_ac_{self._ac.status.id}"
+        return f"at2plus_{self._instance}_ac_{self._ac.status.id}"
 
     @property
     def name(self):

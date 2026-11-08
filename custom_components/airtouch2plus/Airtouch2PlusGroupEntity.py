@@ -17,9 +17,10 @@ _LOGGER = logging.getLogger(__name__)
 class AirTouch2PlusGroupEntity(FanEntity):
     """Representation of an AirTouch 2+ zone."""
 
-    def __init__(self, group: At2PlusGroup) -> None:
+    def __init__(self, group: At2PlusGroup, instance: str) -> None:
         """Initialize the fan entity."""
         self._group = group
+        self._instance = instance
 
     #
     # Entity attributes:
@@ -33,7 +34,7 @@ class AirTouch2PlusGroupEntity(FanEntity):
     @property
     def unique_id(self) -> str:
         """Return unique ID for this device."""
-        return f"at2plus_group_{self._group.status.id}"
+        return f"at2plus__{self._instance}_group_{self._group.status.id}"
 
     @property
     def name(self):
