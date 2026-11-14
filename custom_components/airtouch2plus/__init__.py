@@ -1,5 +1,4 @@
 """The airtouch2 integration."""
-from __future__ import annotations
 
 from airtouch2.at2plus import At2PlusClient
 
@@ -20,7 +19,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     client = At2PlusClient(entry.data[CONF_HOST])
     if not await client.connect():
         raise ConfigEntryNotReady(
-            f"Airtouch2+ client failed to connect to {entry.data[CONF_HOST]}")
+            f"Airtouch2+ client failed to connect to {entry.data[CONF_HOST]}"
+        )
     client.run()
     await client.wait_for_ac()
     if not client.aircons_by_id:
