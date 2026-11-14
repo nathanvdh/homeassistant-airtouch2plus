@@ -21,12 +21,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     client = At2PlusClient(entry.data[CONF_HOST])
     if not await client.connect():
+        await client.stop()
         raise ConfigEntryNotReady(
             f"Airtouch2+ client failed to connect to {entry.data[CONF_HOST]}"
         )
     client.run()
     await client.wait_for_ac()
     if not client.aircons_by_id:
+        await client.stop()
         raise ConfigEntryNotReady("No AC units were found")
     hass.data[DOMAIN][entry.entry_id] = client
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
