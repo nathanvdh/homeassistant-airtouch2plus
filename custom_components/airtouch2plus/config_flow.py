@@ -1,5 +1,4 @@
 """Config flow for airtouch2 integration."""
-from __future__ import annotations
 
 import logging
 from typing import Any
@@ -18,6 +17,7 @@ from .const import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 STEP_USER_DATA_SCHEMA = vol.Schema({vol.Required(CONF_HOST): str})
+
 
 async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str, Any]:
     """Validate the user input allows us to connect."""
