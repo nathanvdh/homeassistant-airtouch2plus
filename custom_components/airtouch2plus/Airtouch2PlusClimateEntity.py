@@ -9,7 +9,7 @@ from homeassistant.components.climate import (
     ClimateEntityFeature,
     HVACMode,
 )
-from homeassistant.const import ATTR_TEMPERATURE, PRECISION_WHOLE, UnitOfTemperature
+from homeassistant.const import ATTR_TEMPERATURE, PRECISION_TENTHS, UnitOfTemperature
 from homeassistant.helpers.entity import DeviceInfo
 
 from .const import DOMAIN
@@ -36,7 +36,7 @@ class Airtouch2PlusClimateEntity(ClimateEntity):
     #
     _attr_max_temp: float = 35.0
     _attr_min_temp: float = 10.0
-    _attr_precision: float = PRECISION_WHOLE
+    _attr_precision: float = PRECISION_TENTHS
     _attr_target_temperature_step: float = 1.0
     _attr_native_temperature_unit: str = UnitOfTemperature.CELSIUS
 
